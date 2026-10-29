@@ -2,7 +2,11 @@
 
 Steady RANS simulation of NASA Rotor 37, the isolated transonic axial compressor rotor used in the AGARD/ASME blind test, built from the published blade coordinates and validated against NASA measurements.
 
-**[▶ Flow animation (43 s)](videos/Rotor37_secondary_flows.mp4)**
+
+
+https://github.com/user-attachments/assets/28a9de7a-c24f-455a-8e03-08118922efb4
+
+
 
 *Tip-leakage flow at peak efficiency and near stall, and through-flow across the passage shock (streamlines in the rotating frame, coloured by relative Mach number).*
 
