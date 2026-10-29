@@ -1,0 +1,6 @@
+*.sim
+*.sim~
+*@*.sim
+*.log
+__pycache__/
+*.pyc

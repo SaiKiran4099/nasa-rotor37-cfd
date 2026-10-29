@@ -1,0 +1,4 @@
+model,mdot_kg_s,PR,TR,eta
+kw_SST,20.413,2.0616,1.2681,0.8573
+Spalart_Allmaras,20.403,2.1425,1.2813,0.8656
+NASA_peak_eff,20.520,2.084,1.2656,0.879
