@@ -2,13 +2,9 @@
 
 Steady RANS simulation of NASA Rotor 37, the isolated transonic axial compressor rotor used in the AGARD/ASME blind test, built from the published blade coordinates and validated against NASA measurements.
 
+![Plane sweeping through the passage: peak efficiency vs near stall](figures/flow/sweep_compare.gif)
 
-
-https://github.com/user-attachments/assets/28a9de7a-c24f-455a-8e03-08118922efb4
-
-
-
-*Tip-leakage flow at peak efficiency and near stall, and through-flow across the passage shock (streamlines in the rotating frame, coloured by relative Mach number).*
+*Relative Mach number on a plane sweeping from the leading edge to behind the blades. Near stall, the slow region at the casing (dark blue, Mach < 0.5) covers 2–6 times more area. Full 51 s video with through-flow and tip-leakage streamlines: [videos/Rotor37_secondary_flows.mp4](videos/Rotor37_secondary_flows.mp4).*
 
 ## Key results
 
@@ -18,9 +14,10 @@ https://github.com/user-attachments/assets/28a9de7a-c24f-455a-8e03-08118922efb4
 | Adiabatic efficiency, peak efficiency | 0.857 | 0.879 | −2.2 pt |
 | PR, 98 % → 93 % of choke | — | — | −0.8 to −1.3 % |
 
-- **Mesh converged:** four meshes, 0.83 M → 5.97 M cells. Medium (3.71 M) → fine-lite changes PR by −0.12 % and efficiency by −0.04 pt. Conservative GCI: PR ±0.9 %, efficiency ±0.3 pt.
-- **Turbulence model is the largest uncertainty:** Spalart-Allmaras vs SST on the same mesh changes PR by +3.9 % and efficiency by +0.84 pt — about four times the mesh uncertainty. The two models bracket NASA's PR.
-- **Flow physics:** the passage shock from the leading edge separates the suction-side boundary layer (≈ 21 % of the surface reversed with SST, ≈ 16 % with SA); a tip-leakage vortex crosses the passage; toward stall the shock detaches and moves upstream and the casing blockage grows.
+- **Mesh converged:** four meshes, 0.83 M → 5.97 M cells. Medium (3.71 M) → fine-lite changes PR by −0.12 % and efficiency by −0.03 pt. Conservative GCI: PR ±0.9 %, efficiency ±0.3 pt.
+- **Turbulence model is the largest uncertainty:** Spalart-Allmaras vs SST on the same mesh changes PR by +3.9 % and efficiency by +0.83 pt — about four times the mesh uncertainty. The two models bracket NASA's PR.
+- **Flow physics:** the passage shock from the leading edge separates the suction-side boundary layer (≈ 21 % of the surface reversed with SST, ≈ 16 % with SA); tip-leakage flow crosses each passage toward the next blade.
+- **Toward stall** (98 % → 92.5 % of choke flow): the shock detaches and moves upstream; from mid-chord on, the outer 10 % of span is about 0.2 Mach slower and its area below Mach 0.5 is 2–6 times larger ([data](data/cfd/sweep_casing_band.csv), read from rendered frames).
 - **Not captured with either model:** excess hub total pressure (no hub leakage path modelled) and a 7–11 pt efficiency deficit at 97 % span.
 
 ![Station 4 profiles: SST vs SA vs NASA](figures/validation/st4_M204_SST_vs_SA.png)
@@ -49,7 +46,7 @@ Operating points are compared at the same fraction of each one's own choke flow 
 ```
 geometry/            r37_v2.stp / .x_t (fluid domain, named faces), r37_blade.stp
 data/nasa/           NASA 100 % speed map and station 4 radial profiles
-data/cfd/            speedline, grid study and turbulence-model summary tables
+data/cfd/            speedline, grid study, turbulence-model and casing-band summary tables
 data/cfd/station4_raw/  exported station 4 cell tables (lab-frame p0, T0, rho, velocity)
 data/cfd/profiles/   circumferentially mass-averaged station 4 profiles
 scripts/             post-processing (Python: numpy, scipy, matplotlib)
